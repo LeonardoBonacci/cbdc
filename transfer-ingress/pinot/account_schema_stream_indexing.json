@@ -1,0 +1,21 @@
+{
+    "schemaName": "accounts_1",
+    "dimensionFieldSpecs": [
+      {
+        "name": "id",
+        "dataType": "STRING"
+      },
+      {
+        "name": "poolId",
+        "dataType": "STRING"
+      }
+    ],
+    "metricFieldSpecs": [
+    ],
+    "dateTimeFieldSpecs": [{
+      "name": "timestamp",
+      "dataType": "LONG",
+      "format" : "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS"
+    }]
+  }

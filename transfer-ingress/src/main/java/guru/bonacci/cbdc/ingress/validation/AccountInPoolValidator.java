@@ -1,6 +1,7 @@
 package guru.bonacci.cbdc.ingress.validation;
 
-import guru.bonacci.cbdc.ingress.TransferRequest;
+import guru.bonacci.cbdc.ingress.domain.BlockingTransferRequest;
+import guru.bonacci.cbdc.ingress.pinot.PoolService;
 import jakarta.inject.Inject;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -20,7 +21,7 @@ public class AccountInPoolValidator implements ConstraintValidator<AccountInPool
 
     try {
     	
-    	if (value instanceof TransferRequest transferRequest) {
+    	if (value instanceof BlockingTransferRequest transferRequest) {
 
     		return service.accountInPool(transferRequest.getFromId(), transferRequest.getPoolId())
     				&& service.accountInPool(transferRequest.getToId(), transferRequest.getPoolId());

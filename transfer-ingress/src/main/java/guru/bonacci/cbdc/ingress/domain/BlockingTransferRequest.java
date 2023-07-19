@@ -1,4 +1,4 @@
-package guru.bonacci.cbdc.ingress;
+package guru.bonacci.cbdc.ingress.domain;
 
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @AccountInPool
-public class TransferRequest {
+public class BlockingTransferRequest {
 	
   private UUID id;
   

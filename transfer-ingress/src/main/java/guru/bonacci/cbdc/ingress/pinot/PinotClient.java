@@ -1,4 +1,4 @@
-package guru.bonacci.cbdc.ingress.validation;
+package guru.bonacci.cbdc.ingress.pinot;
 
 import org.apache.pinot.client.Connection;
 import org.apache.pinot.client.ConnectionFactory;

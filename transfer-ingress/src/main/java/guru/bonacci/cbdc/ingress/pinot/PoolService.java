@@ -1,4 +1,4 @@
-package guru.bonacci.cbdc.ingress.validation;
+package guru.bonacci.cbdc.ingress.pinot;
 
 import static org.jooq.impl.DSL.field;
 

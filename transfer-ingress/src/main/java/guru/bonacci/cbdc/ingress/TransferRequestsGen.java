@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
+import guru.bonacci.cbdc.ingress.domain.BlockingTransferRequest;
 import io.smallrye.mutiny.Multi;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -23,9 +24,9 @@ public class TransferRequestsGen {
 
 	
 	@Outgoing("transferrequests-out")
-	public Multi<TransferRequest> generate() {
+	public Multi<BlockingTransferRequest> generate() {
 		return Multi.createFrom().ticks().every(Duration.ofSeconds(1))
-				.map(ignore -> new TransferRequest(
+				.map(ignore -> new BlockingTransferRequest(
 													UUID.randomUUID(), // id
 													USERS.get(random.nextInt(USERS.size())), // from
 													USERS.get(random.nextInt(USERS.size())), // to

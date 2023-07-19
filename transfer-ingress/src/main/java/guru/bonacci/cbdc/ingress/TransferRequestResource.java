@@ -78,8 +78,10 @@ public class TransferRequestResource {
 	}
 	
 	Uni<Boolean> validate(final NonBlockingTransferRequest nonblocking) {
-		Uni<Boolean> fromValid = Uni.createFrom().item(nonblocking)
-        .map(req -> poolService.accountInPool(req.getFromId(), req.getPoolId()))
+		// How 'much' does it matter?
+		Uni<Boolean> fromValid = 
+				Uni.createFrom()
+				.completionStage(poolService.futureAccountInPool(nonblocking.getFromId(), nonblocking.getPoolId()))
         .runSubscriptionOn(Infrastructure.getDefaultWorkerPool());
 
 		Uni<Boolean> toValid = Uni.createFrom().item(nonblocking)

@@ -1,8 +1,16 @@
-# transfer-ingress
+# Transfer ingress
 
 ```
 cat account_stream.txt | ./bin/kafka-console-producer --broker-list localhost:9092 --topic accounts 
 ```
+
+```
+curl -v  -d '{"fromId": "a", "toId": "b", "poolId": "coro", "poolType": "easy", "amount": 12.34}' -H "Content-Type: application/json"  -X POST http://localhost:8080/transfers/nonblocking
+curl -v  -d '{"fromId": "b", "toId": "a", "poolId": "coro", "poolType": "easy", "amount": 12.34}' -H "Content-Type: application/json"  -X POST http://localhost:8080/transfers/nonblocking
+curl -v  -d '{"fromId": "d", "toId": "a", "poolId": "coro", "poolType": "easy", "amount": 12.34}' -H "Content-Type: application/json"  -X POST http://localhost:8080/transfers/nonblocking
+```
+
+---
 
 Future: https://github.com/quarkiverse/quarkus-pinot
 

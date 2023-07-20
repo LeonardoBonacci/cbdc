@@ -1,0 +1,2 @@
+{    "id": "foo",    "from": "me",    "to": "you",    "poolId": "coro", "poolId": "EASY", "amount": 12.34   "timestamp": 1620050945000}
+{    "id": "foo",    "from": "you",    "to": "me",    "poolId": "coro", "poolId": "EASY", "amount": 12.35   "timestamp": 1620050945001}

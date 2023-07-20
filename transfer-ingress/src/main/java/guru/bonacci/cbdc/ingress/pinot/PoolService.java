@@ -23,7 +23,7 @@ public class PoolService {
 	public boolean accountInPool(String accountId, String poolId) {
 		String existsQuery = DSL.using(SQLDialect.POSTGRES)
 				.select(field("*"))
-				.from("accounts_1")
+				.from("accounts")
 				.where(field("id").eq(accountId).and(field("poolId").eq(poolId)))
 				.getSQL(ParamType.INLINED);
 
@@ -35,7 +35,7 @@ public class PoolService {
 	public CompletableFuture<Boolean> futureAccountInPool(String accountId, String poolId) {
 		String existsQuery = DSL.using(SQLDialect.POSTGRES)
 				.select(field("*"))
-				.from("accounts_1")
+				.from("accounts")
 				.where(field("id").eq(accountId).and(field("poolId").eq(poolId)))
 				.getSQL(ParamType.INLINED);
 

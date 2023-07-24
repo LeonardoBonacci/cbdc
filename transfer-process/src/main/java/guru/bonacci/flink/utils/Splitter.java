@@ -1,0 +1,35 @@
+package guru.bonacci.flink.utils;
+
+import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.streaming.api.functions.ProcessFunction;
+import org.apache.flink.util.Collector;
+import org.apache.flink.util.OutputTag;
+
+import guru.bonacci.flink.transfers.domain.Transfer;
+import guru.bonacci.flink.transfers.domain.TransferErrors;
+import lombok.RequiredArgsConstructor;
+
+/**
+ * Branches off invalid transfers
+ */
+@RequiredArgsConstructor
+public class Splitter extends ProcessFunction<Tuple2<Transfer, Boolean>, Transfer> {
+
+	private static final long serialVersionUID = 1L;
+
+	private final OutputTag<Tuple2<Transfer, TransferErrors>> outputTagInvalid;
+	private final TransferErrors errorMessage;
+	
+  @Override
+  public void processElement(
+  		Tuple2<Transfer, Boolean> tuple,
+      Context ctx,
+      Collector<Transfer> out) throws Exception {
+
+    if (tuple.f1) {
+      out.collect(tuple.f0);
+    } else {
+      ctx.output(outputTagInvalid, Tuple2.of(tuple.f0, errorMessage));
+    }
+  }
+}

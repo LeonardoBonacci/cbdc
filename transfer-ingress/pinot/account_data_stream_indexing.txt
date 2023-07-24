@@ -1,4 +1,0 @@
-{    "id": "a",    "poolId": "coro", "timestamp": 1689789833 }
-{    "id": "b",    "poolId": "coro", "timestamp": 1689789834 }
-{    "id": "me",    "poolId": "coro", "timestamp": 1689789835 }
-{    "id": "you",    "poolId": "coro", "timestamp": 1689789836 }
